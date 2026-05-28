@@ -1,0 +1,11 @@
+{
+    "type": "record",
+    "name": "Order",
+    "namespace": "com.learning.kafka_demo.avro",
+    "fields": [
+        {"name": "orderId", "type": "string"},
+        {"name": "product", "type": "string"},
+        {"name": "amount",  "type": "int"},
+        {"name": "status",  "type": "string"}
+    ]
+}
