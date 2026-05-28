@@ -1,6 +1,7 @@
 package com.learning.kafka_demo.avro;
 
 import lombok.AllArgsConstructor;
+import lombok.Getter;
 import lombok.NoArgsConstructor;
 import org.apache.avro.Schema;
 import org.apache.avro.SchemaBuilder;
@@ -8,8 +9,9 @@ import org.apache.avro.specific.SpecificRecordBase;
 
 @AllArgsConstructor
 @NoArgsConstructor
+@Getter
 public class OrderAvro extends SpecificRecordBase {
-    public static final Schema SCHEMA$ = SchemaBuilder.record("Order")
+    public static final Schema SCHEMA$ = SchemaBuilder.record("OrderAvro")
             .namespace("com.learning.kafka_demo.avro")
             .fields()
                 .requiredString("orderId")
@@ -49,12 +51,6 @@ public class OrderAvro extends SpecificRecordBase {
             default -> throw new org.apache.avro.AvroRuntimeException("Bad index: " + field);
         }
     }
-
-    // Getters
-    public String getOrderId() { return orderId; }
-    public String getProduct() { return product; }
-    public int getAmount() { return amount; }
-    public String getStatus() { return status; }
 
     @Override
     public String toString() {
