@@ -1,6 +1,6 @@
 package com.learning.kafka_demo.controller;
 
-import com.learning.kafka_demo.avro.OrderAvro;
+import com.learning.kafka_demo.avro.Order;
 import com.learning.kafka_demo.producer.OrderProducer;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
@@ -13,12 +13,12 @@ public class OrderController {
 
     @PostMapping
     public String placeOrder(@RequestBody OrderRequest request) {
-        OrderAvro order = new OrderAvro(
-            request.orderId(),
-            request.product(),
-            request.amount(),
-            request.status()
-        );
+        Order order = Order.newBuilder()
+                        .setOrderId(request.orderId())
+                        .setProduct(request.product())
+                        .setAmount(request.amount())
+                        .setStatus(request.status())
+                        .build();
 
         orderProducer.sendOrder(order);
         return "Order sent: " + order.getOrderId();

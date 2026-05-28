@@ -10,7 +10,7 @@ import org.apache.avro.specific.SpecificRecordBase;
 @AllArgsConstructor
 @NoArgsConstructor
 @Getter
-public class OrderAvro extends SpecificRecordBase {
+public class OrderAvro_HandWriteTest extends SpecificRecordBase {
     public static final Schema SCHEMA$ = SchemaBuilder.record("OrderAvro")
             .namespace("com.learning.kafka_demo.avro")
             .fields()

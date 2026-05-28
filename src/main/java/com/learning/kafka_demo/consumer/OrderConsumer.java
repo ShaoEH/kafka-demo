@@ -1,6 +1,6 @@
 package com.learning.kafka_demo.consumer;
 
-import com.learning.kafka_demo.avro.OrderAvro;
+import com.learning.kafka_demo.avro.Order;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.kafka.clients.consumer.ConsumerRecord;
 import org.springframework.kafka.annotation.KafkaListener;
@@ -15,7 +15,7 @@ public class OrderConsumer {
             groupId = "orders-group-1",
             concurrency = "3"
     )
-    public void consume(ConsumerRecord<String, OrderAvro> record) {
+    public void consume(ConsumerRecord<String, Order> record) {
         log.info("Received order: key={}", record.key());
 
         // 模擬：order-001 處理失敗
