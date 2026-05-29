@@ -27,6 +27,15 @@ public class OrderConsumer {
     }
 
     @KafkaListener(
+            topics = "high-value-orders",
+            groupId = "high-value-orders-group"
+    )
+    public void consumeHighValue(ConsumerRecord<String, Order> record) {
+        log.info("⭐ High value order received: key={}, amount={}",
+                record.key(), record.value().getAmount());
+    }
+
+    @KafkaListener(
             topics = "orders-dlt",
             groupId = "orders-dlt-group"
     )
